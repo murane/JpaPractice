@@ -4,9 +4,7 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -20,8 +18,8 @@ public class Member {
 
     private String name;
 
-    @OneToMany(mappedBy = "member", fetch = FetchType.EAGER)
-    //@OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
+    //@OneToMany(mappedBy = "member", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
     private Set<Item> items = new HashSet<>();
 
     public Member(String name) {

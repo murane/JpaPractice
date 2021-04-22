@@ -24,7 +24,6 @@ class NplusoneTest {
         List<Member> members = memberRepository.findAll();
     }
     @Test
-    //@Transactional
     void N1_쿼리테스트(){
         List<Member> members = memberRepository.findAll();
         for(Member member: members){
@@ -35,6 +34,13 @@ class NplusoneTest {
     @Test
     void FetchJoin_쿼리테스트(){
         Set<Member> members = memberRepository.findAllByJoinFetch();
+        for(var member: members){
+            System.out.println(member.getItems().size());
+        }
+    }
+    @Test
+    void EntityGraph_쿼리테스트(){
+        List<Member> members = memberRepository.findAllByEntityGraph();
         for(var member: members){
             System.out.println(member.getItems().size());
         }
